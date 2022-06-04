@@ -1,12 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import UserDetails from "./user_details/UserDetails";
 
 function App() {
-  return (
-    <div className="App">
-    </div>
-  );
+    return (
+        <div className="App">
+            <UserDetails/>
+        </div>
+    );
 }
 
 export default App;
