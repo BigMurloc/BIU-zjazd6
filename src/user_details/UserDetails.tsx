@@ -1,12 +1,11 @@
+import {UserDetailsModel} from "../model/UserDetailsModel";
 
 
-const UserDetails = () => {
-
-
+const UserDetails = (userDetails: any) => {
 
     return (
         <div>
-            test
+            {userDetails?.name}
         </div>
     )
 }
