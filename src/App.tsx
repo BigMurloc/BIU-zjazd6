@@ -1,27 +1,24 @@
-import React, {useCallback, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
-import ky from 'ky';
-import {toUserDetailsModel, UserDetailsModel} from "./model/UserDetailsModel";
+import {Meal} from "./meal/Meal";
+import MealService from "./meal/api/MealService";
 
 function App() {
 
-
-    const [userDetails, setUserDetails] = useState<UserDetailsModel | null>(null);
-
-    const callApi = useCallback(async () => {
-        await ky.get('https://randomuser.me/api/')
-            .json<any>()
-            .then<any>(response => response.results[0])
-            .then<UserDetailsModel>(result => toUserDetailsModel(result))
-            .then(model => setUserDetails(model));
-    }, []);
+    const meal1 = MealService.useRandom();
+    const meal2 = MealService.useRandom();
+    const meal3 = MealService.useRandom();
+    const meal4 = MealService.useRandom();
+    const meal5 = MealService.useRandom();
 
     return (
-            <div className="App">
-                <div>Name: {userDetails?.name}</div>
-                <div>Address: {userDetails?.address}</div>
-                <button onClick={callApi}>Generate random data</button>
-            </div>
+        <div className="App">
+            <Meal {...meal1}/>
+            <Meal {...meal2}/>
+            <Meal {...meal3}/>
+            <Meal {...meal4}/>
+            <Meal {...meal5}/>
+        </div>
     );
 }
 
